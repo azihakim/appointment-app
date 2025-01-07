@@ -1,0 +1,64 @@
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio sections-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header">
+      <h2>List Buku</h2>
+      <p>Ketersediaan buku:</p>
+    </div>
+
+    <div
+      class="portfolio-isotope"
+      data-portfolio-filter="*"
+      data-portfolio-layout="masonry"
+      data-portfolio-sort="original-order"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <div>
+        <ul class="portfolio-flters">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-app">App</li>
+          <li data-filter=".filter-product">Product</li>
+          <li data-filter=".filter-branding">Branding</li>
+          <li data-filter=".filter-books">Books</li>
+        </ul>
+        <!-- End Portfolio Filters -->
+      </div>
+
+      <div class="row gy-4 portfolio-container">
+        <div
+          class="col-xl-4 col-md-6 portfolio-item filter-books"
+          *ngFor="let book of books"
+        >
+          <div class="portfolio-wrap">
+            <a
+              href="assets/img/portfolio/books-1.jpg"
+              data-gallery="portfolio-gallery-app"
+              class="glightbox"
+              ><img
+                src="assets/img/portfolio/books-1.jpg"
+                class="img-fluid"
+                alt=""
+            /></a>
+            <div class="portfolio-info">
+              <h4>
+                <a href="portfolio-details.html" title="More Details">{{
+                  book.judul
+                }}</a>
+              </h4>
+              <a class="btn btn-warning" href="edit-book/{{ book._id }}"
+                >Edit</a
+              >
+              &nbsp;
+              <button (click)="delBook(book)" class="btn btn-danger">
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Portfolio Container -->
+    </div>
+  </div>
+</section>
+<!-- End Portfolio Section -->
