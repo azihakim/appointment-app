@@ -11,6 +11,7 @@ import { ListBookComponent } from './list-book/list-book.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { ListAppointmentComponent } from './list-appointment/list-appointment.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
     DeleteBookComponent,
     ListBookComponent,
     MainComponent,
-    AddAppointmentComponent
+    AddAppointmentComponent,
+    ListAppointmentComponent
   ],
   imports: [
     BrowserModule,

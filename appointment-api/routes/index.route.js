@@ -45,25 +45,25 @@ appointmentExpressRoute.route("/add-appointment").post((req, res, next) => {
     });
 });
 
-// Update a appointment by ID
+// Update an appointment by ID
 appointmentExpressRoute
   .route("/update-appointment/:id")
-  .put((req, res, next) => {
-    AppointmentSchema.findOneAndUpdate(
-      { _id: req.params.id },
-      { $set: req.body },
-      { new: true }
-    )
-      .exec()
-      .then((data) => {
-        if (!data) {
-          return res.status(404).json({ message: "Appointment not found" });
-        }
-        res.json(data);
-      })
-      .catch((error) => {
-        return next(error);
-      });
+  .put(async (req, res, next) => {
+    try {
+      const updatedAppointment = await AppointmentSchema.findByIdAndUpdate(
+        req.params.id, // ID yang diberikan di URL
+        { $set: req.body }, // Data yang ingin diperbarui
+        { new: true } // Mengembalikan dokumen setelah diperbarui
+      );
+
+      if (!updatedAppointment) {
+        return res.status(404).json({ message: "Appointment not found" });
+      }
+
+      return res.status(200).json(updatedAppointment);
+    } catch (error) {
+      next(error); // Lempar error ke middleware penanganan error
+    }
   });
 
 // Delete a appointment by ID
